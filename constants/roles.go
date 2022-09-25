@@ -9,8 +9,8 @@ const (
 
 	canSeeCanada
 	canSeeNoida
-	canSeeHyderabad
-	canSeeGorakhpur
+	canSeeHyderabad // camelCasing for internal constants
+	CanSeeGorakhpur // PascalCasing for external constants
 )
 
 func main() {
