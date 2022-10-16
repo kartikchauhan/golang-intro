@@ -7,5 +7,10 @@ func main() {
 	// cards = append(cards, "Three of Club")
 
 	cards := newDeck()
+
+	hand, remainingDeck := deal(cards, 5)
+
+	hand.print()
+	remainingDeck.print()
 	cards.print()
 }
