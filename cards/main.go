@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 var decksize int
 
 func main() {
@@ -8,9 +10,12 @@ func main() {
 
 	cards := newDeck()
 
-	hand, remainingDeck := deal(cards, 5)
+	// hand, remainingDeck := cards.deal(5)
 
-	hand.print()
-	remainingDeck.print()
-	cards.print()
+	// hand.print()
+	// remainingDeck.print()
+	// cards.print()
+
+	fmt.Println(cards.toString())
+
 }
