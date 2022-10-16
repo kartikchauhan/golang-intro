@@ -61,6 +61,7 @@ func newDeckFromFile(filename string) deck {
 	return deck(s)
 }
 
+// Using Fisher-Yates shuffle algorithm
 func (d deck) shuffle() {
 	rand.Seed(time.Now().UnixMilli()) // generate a new seed everytime
 
