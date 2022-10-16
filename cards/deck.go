@@ -4,8 +4,10 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"math/rand"
 	"os"
 	"strings"
+	"time"
 )
 
 type deck []string
@@ -57,4 +59,14 @@ func newDeckFromFile(filename string) deck {
 	s := strings.Split(string(data), ",")
 
 	return deck(s)
+}
+
+func (d deck) shuffle() {
+	rand.Seed(time.Now().UnixMilli()) // generate a new seed everytime
+
+	for i := 51; i > 1; i-- {
+		index := rand.Intn(i)
+
+		d[i], d[index] = d[index], d[i] // swap the cards
+	}
 }
