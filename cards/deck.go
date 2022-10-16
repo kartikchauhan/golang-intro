@@ -2,6 +2,9 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
+	"log"
+	"os"
 	"strings"
 )
 
@@ -36,4 +39,22 @@ func (d deck) deal(handSize int) (deck, deck) {
 
 func (d deck) toString() string {
 	return strings.Join([]string(d), ",")
+}
+
+func (d deck) saveToFile(filename string) error {
+	return ioutil.WriteFile(filename, []byte(d.toString()), 0666)
+}
+
+func newDeckFromFile(filename string) deck {
+	data, err := ioutil.ReadFile(filename)
+
+	if err != nil {
+		log.Fatal("Error: ", err)
+
+		os.Exit(1)
+	}
+
+	s := strings.Split(string(data), ",")
+
+	return deck(s)
 }
