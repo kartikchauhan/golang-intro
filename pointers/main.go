@@ -23,8 +23,11 @@ func main() {
 		},
 	}
 
-	irrfanPointer := &irrfan
-	irrfanPointer.updateFirstName("Sir Irrfan")
+	// irrfanPointer := &irrfan
+	// irrfanPointer.updateFirstName("Sir Irrfan")
+
+	// we can just pass the original identifier and go will deduce the *type* if the receiver is of type "pointer to *type*"
+	irrfan.updateFirstName("Sir Irrfan")
 	irrfan.print()
 }
 
