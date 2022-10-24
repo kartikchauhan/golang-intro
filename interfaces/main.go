@@ -18,6 +18,8 @@ func main() {
 
 	printGreeting(eb)
 	printGreeting(sb)
+
+	request()
 }
 
 func printGreeting(b bot) { // Assumption: printGreeting has common code
