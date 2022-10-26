@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"time"
 )
 
 func main() {
@@ -28,7 +29,10 @@ func main() {
 
 	// Whenever channel ch receives a value, assign it to url and make a call to function checkStatus.
 	for url := range ch { // iterate over channel ch.
-		go checkStatus(url, ch)
+		go func(link string) {
+			time.Sleep(5 * time.Second)
+			checkStatus(link, ch)
+		}(url)
 	}
 }
 
