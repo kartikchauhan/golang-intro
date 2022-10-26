@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"strconv"
 )
 
 func main() {
@@ -17,14 +16,14 @@ func main() {
 
 	ch := make(chan string)
 
-	for i, url := range urls {
-		fmt.Println("call to " + strconv.Itoa(i) + " starts")
+	for _, url := range urls {
+		// fmt.Println("call to " + strconv.Itoa(i) + " starts")
 		go checkStatus(url, ch)
-		fmt.Println("call to", i, "ends")
+		// fmt.Println("call to", i, "ends")
 	}
 
-	for i := 0; i < len(urls); i++ {
-		fmt.Println(<-ch)
+	for {
+		go checkStatus(<-ch, ch)
 	}
 }
 
@@ -32,9 +31,11 @@ func checkStatus(url string, c chan string) {
 	_, err := http.Get(url)
 
 	if err != nil {
-		c <- "Seems like " + url + " is down"
+		fmt.Println("Seems like " + url + " is down")
+		c <- url
 		return
 	}
 
-	c <- url + " is up"
+	fmt.Println(url + " is up")
+	c <- url
 }
