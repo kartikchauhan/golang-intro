@@ -17,13 +17,18 @@ func main() {
 	ch := make(chan string)
 
 	for _, url := range urls {
-		// fmt.Println("call to " + strconv.Itoa(i) + " starts")
 		go checkStatus(url, ch)
-		// fmt.Println("call to", i, "ends")
 	}
 
-	for {
-		go checkStatus(<-ch, ch)
+	// for {
+	// 	go checkStatus(<-ch, ch)
+	// }
+
+	// Alternative for loop
+
+	// Whenever channel ch receives a value, assign it to url and make a call to function checkStatus.
+	for url := range ch { // iterate over channel ch.
+		go checkStatus(url, ch)
 	}
 }
 
