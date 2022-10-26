@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"os"
 	"strconv"
 )
 
@@ -34,7 +33,7 @@ func checkStatus(url string, c chan string) {
 
 	if err != nil {
 		c <- "Seems like " + url + " is down"
-		os.Exit(1)
+		return
 	}
 
 	c <- url + " is up"
