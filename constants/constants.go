@@ -8,7 +8,7 @@ const (
 	MB
 )
 
-func main() {
+func constants() {
 	fmt.Printf("%vKB\n", KB)
 	fmt.Printf("%vMB\n", MB)
 }
