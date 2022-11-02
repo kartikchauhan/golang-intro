@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"context"
 )
 
 const keyServerAddr = "serverAddress"
@@ -29,7 +28,7 @@ func getTab(res http.ResponseWriter, req *http.Request) {
 	printEndpoint("/tabs/{tab_id}")
 
 	ctx := req.Context()
-	
+
 	fmt.Printf("%s \n", ctx.Value(keyServerAddr))
 
 	data := []byte("Tab id 2")
