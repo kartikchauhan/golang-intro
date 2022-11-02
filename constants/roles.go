@@ -13,7 +13,7 @@ const (
 	CanSeeGorakhpur // PascalCasing for external constants
 )
 
-func main() {
+func roles() {
 	var allRoles byte = isManager | canSeeCanada | canSeeHyderabad
 
 	fmt.Printf("%b\n", allRoles)
